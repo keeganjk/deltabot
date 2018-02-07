@@ -99,5 +99,5 @@ Deltabot is a simplistic <a href="discordapp.com">Discord</a> bot that only offe
 > ~~~
 
 ## Credits <a id="credits">
-[Discord](https://discordapp.com "Discord"), Discord Developers
+[Discord](https://discordapp.com "Discord"), Discord Developers <br />
 [discord.py](https://github.com/Rapptz/discord.py "discord.py"), [Rapptz](https://github.com/Rapptz "Rapptz")
