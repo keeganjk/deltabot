@@ -67,7 +67,14 @@ async def on_message(message):
     if log == 1 or log == True:                     # If log is enabled
         history.append(auth_name + ': ' + original) # Add latest message to history.
 
-    for prefix in prefixes:
+    for prefix in prefixes:                                  # For every prefix,
+        
+        for i in usr_greetings:                              # For item in usr_greetings:
+            if digested.startswith(prefix + i):              # If the message starts with [prefix][item]:
+                msg = random.choice(bot_greetings)           # Choose a random choice from the bot's known greetings
+                msg = msg + ', ' + '**' + str(author) + '**' # Set reply to "[greeting], [message author]"
+                await client.send_message(channel, msg)      # Send message.
+                        
         if digested.startswith(prefix + "log"):         # If the message starts with [prefix]log,
             digested = digested.replace(prefix, '')     # Get rid of prefix
             if "off" in digested or '0' in digested:    # If "off" is in the message,
@@ -92,13 +99,6 @@ async def on_message(message):
                 msg    = "```" + logStr + "```"         # Puts history in code format so it's easier to read
                 await client.send_message(channel, msg) # Sends specified message.
                 
-        elif digested in usr_greetings:                              # Otherwise, if digested is in usr_greetings,
-            for i in usr_greetings:                                  # For item in usr_greetings:
-                    if digested.startswith(prefix + i):              # If the message starts with [prefix][item]:
-                        msg = random.choice(bot_greetings)           # Choose a random choice from the bot's known greetings
-                        msg = msg + ', ' + '**' + str(author) + '**' # Set reply to "[greeting], [message author]"
-                        await client.send_message(channel, msg)      # Send message.
-        
         elif digested.startswith(prefix + "help"): # Otherwise, if the message starts with [prefix]help,
             msg = ("INSERT\n"                      # Put a help message here
                    "HELP\n"
