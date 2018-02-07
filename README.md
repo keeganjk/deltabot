@@ -20,6 +20,16 @@ Simple Discord bot that's easy to understand and change, modify as you wish! Fee
 > <h5><a href="https://www.python.org/downloads/">Python 3.6+</a> (If on macOS, you will need to run <code>Applications/Python 3.6/Install Certificates.command</code>)</h5>
 > <h5><a href="https://github.com/Rapptz/discord.py">discord.py</a> (If on Windows, you will need to use <code>C:/Python36/scripts/pip install discord.py</code> in CMD)</h5>
 
+- [What is it?](#what-is-it)
+- [How to use it](#how-to-use-it)
+  - [Download](#dl)
+  - [Extract files](#extract)
+  - [Registering the bot](#reg)
+  - [Adding token](#token)
+  - [Adding to server](#add)
+  - [Editing the bot](#edit)
+ - [Credits](#credits)
+
 ## What is it? <a id="what-is-it">
 Deltabot is a simplistic <a href="discordapp.com">Discord</a> bot that only offers a few features and allows you to change it to your desire. It is made simply for the purpose of people to make their own bots to do anything they want. The basics come pre-coded, so all you need to do is add what you want. Delta (Δ) is a Greek character that represents change in mathematics. This bot is called Deltabot because you are supposed to change it.
 ## How to use it <a id="how-to-use">
@@ -38,7 +48,7 @@ Deltabot is a simplistic <a href="discordapp.com">Discord</a> bot that only offe
 
 <hr>
 
-> ### 3a. Register the bot
+> ### 3a. Register the bot <a id="reg">
 > In your web browser, navigate to <a href="https://discordapp.com/developers/applications/me">https://discordapp.com/developers/applications/me</a>.
 > Click "New App". 
 > Next, give it a name and a description if you'd like.
@@ -49,14 +59,14 @@ Deltabot is a simplistic <a href="discordapp.com">Discord</a> bot that only offe
 
 <hr>
 
-> ### 3b. Add your token
+> ### 3b. Add your token <a id="token">
 > On your bot's page, scroll down to "App Bot User" and click "click to reveal" next to "Token:" to reveal your token.
 > Copy your token.
 > Open `deltabot.py` in a text editor and scroll down to the bottom.
 > On the last line, `client.run('token')`, replace `token` with your bot's token, leaving it in quotes.
 > ![Adding token](https://raw.githubusercontent.com/keeganjk/deltabot/master/images/token.gif "")
 
-> ### 3c. Adding your bot to a server
+> ### 3c. Adding your bot to a server <a id="add">
 > To add your bot to a server, you would use this link: https://discordapp.com/api/oauth2/authorize?client_id=CLIENTIDHERE&scope=bot&permissions=1, but you have to get your Client ID. 
 > There are two ways of doing this:
 > (easiest) 1. Run `deltabot.py`, an authorization link will instantly be generated that you can go to to add your bot to a server.
@@ -65,7 +75,11 @@ Deltabot is a simplistic <a href="discordapp.com">Discord</a> bot that only offe
 
 <hr>
 
-> ### (optional) 3d. Editing your bot
+> ### (optional) 3d. Editing your bot <a id="edit">
 > In your text editor, you can edit your bot. There is already a part near the bottom you can un-comment (remove the `#`s from the beginning) and add custom parameters, text, etc.
 > You can customize your bot however you'd like!
 > Good luck!
+
+## Credits <a id="credits">
+[Discord](https://discordapp.com "Discord"), Discord Developers
+[discord.py](https://github.com/Rapptz/discord.py "discord.py"), [Rapptz](https://github.com/Rapptz "Rapptz")
