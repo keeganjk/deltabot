@@ -29,6 +29,7 @@ Simple Discord bot that's easy to understand and change, modify as you wish!
   - [Adding token](#token)
   - [Adding to server](#add)
   - [Editing the bot](#edit)
+ - [Defaults](#defs) 
  - [Credits](#credits)
 
 ## What is it? <a id="what-is-it">
@@ -80,6 +81,22 @@ Deltabot is a simplistic <a href="discordapp.com">Discord</a> bot that only offe
 > In your text editor, you can edit your bot. There is already a part near the bottom you can un-comment (remove the `#`s from the beginning) and add custom parameters, text, etc.
 > You can customize your bot however you'd like!
 > Good luck!
+
+<hr><hr>
+
+> ### Defaults: <a id="defs">
+> ~~~
+> Default prefix       : !! or @botname  or @botname#.... 
+> Default commands     : 
+> hi, hey, hello, etc. : bot responds to greeting (from list of greetings (usr_greetings))
+> log.                 : shows log
+> log on/1/off/0       : enables/disables log
+> log stat             : shows log status (enabled/disabled)
+> log clear            : clears log
+> help                 : displays custom help message
+> info                 : displays custom info message
+> set prefix [prefix]  : changes default prefix to a prefix of your choice
+> ~~~
 
 ## Credits <a id="credits">
 [Discord](https://discordapp.com "Discord"), Discord Developers
