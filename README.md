@@ -9,7 +9,7 @@
 ,,========`` |___/ |___ |___   |   |   | |___/ \___/   |
 ~~~
 
-Simple Discord bot that's easy to understand and change, modify as you wish! Feel free to contribute!
+Simple Discord bot that's easy to understand and change, modify as you wish! 
 
 ### Supported platforms:
 > <h5>Windows</h5>
