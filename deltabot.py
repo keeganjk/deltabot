@@ -85,31 +85,22 @@ async def on_message(message):
                 del history                             # Deletes history
                 del logStr                              # Deletes log as string
                 history = []                            # Creates new, empty list.
-                msg     = "History cleared"             # Sets message to "History cleared"
+                msg     = "Log cleared"                 # Sets message to "History cleared"
                 await client.send_message(channel, msg) # Sends message.
             else:                                       # Otherwise,
                 logStr = '\n'.join(history)             # Log as a string
                 msg    = "```" + logStr + "```"         # Puts history in code format so it's easier to read
                 await client.send_message(channel, msg) # Sends specified message.
-        if digested.startswith(prefix + "history"):     # If the message starts with [prefix]history,
-            logStr = '\n'.join(history)                 # Log as a string
-            msg    = "```" + logStr + "```"             # Puts history in code format so it's easier to read
-            await client.send_message(channel, msg)     # Sends specified message.
-            if "clear" in digested:                     # If "clear" is in the message as well,
-                del history                             # Deletes history
-                del logStr                              # Deletes log as string
-                history = []                            # Creates new, empty list.
-                msg     = "History cleared"             # Sets message to "History cleared"
-                await client.send_message(channel, msg) # Sends message.
-        else:                                           # Otherwise,
+                
+        elif digested in usr_greetings:                              # Otherwise, if digested is in usr_greetings,
             for i in usr_greetings:                                  # For item in usr_greetings:
                     if digested.startswith(prefix + i):              # If the message starts with [prefix][item]:
                         msg = random.choice(bot_greetings)           # Choose a random choice from the bot's known greetings
                         msg = msg + ', ' + '**' + str(author) + '**' # Set reply to "[greeting], [message author]"
                         await client.send_message(channel, msg)      # Send message.
-
-        if digested.startswith(prefix + "help"): # Otherwise, if the message starts with [prefix]help,
-            msg = ("INSERT\n"                    # Put a help message here
+        
+        elif digested.startswith(prefix + "help"): # Otherwise, if the message starts with [prefix]help,
+            msg = ("INSERT\n"                      # Put a help message here
                    "HELP\n"
                    "MESSAGE\n"
                    "HERE")
