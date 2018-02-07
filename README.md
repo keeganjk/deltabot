@@ -22,7 +22,7 @@ Simple Discord bot that's easy to understand and change, modify as you wish!
 
 ## Contents
 - [What is it?](#what-is-it)
-- [How to use it](#how-to-use-it)
+- [How to use it](#how-to-use)
   - [Download](#dl)
   - [Extract files](#extract)
   - [Registering the bot](#reg)
