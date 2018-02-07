@@ -9,6 +9,7 @@
 # Click "Create a Bot User" to turn this application into a bot and confirm with "Yes, do it!".
 # You can find the Client ID near the top of the page under "APP DETAILS".
 # To add the bot to a server, go to https://discordapp.com/api/oauth2/authorize?client_id=CLIENTIDHERE&scope=bot&permissions=1
+# This link will be generated when you run this script, assuming that you've put in your token.
 # Lastly, at the bottom of the page, you will see a line that says "client.run('token')".
 # Find your token near the bottom of your bot's page under "Bot".
 # You will have to click "click to reveal".
