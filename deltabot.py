@@ -79,25 +79,24 @@ async def on_message(message):
             digested = digested.replace(prefix, '')     # Get rid of prefix
             if "off" in digested or '0' in digested:    # If "off" is in the message,
                 log = 0                                 # Disable logging.
-                msg = "Log disabled"                    # Sets message to "Log disabled"
-                await client.send_message(channel, msg) # Sends message
+                msg = "Log disabled"                    # Set message to "Log disabled"
+                await client.send_message(channel, msg) # Send message
             elif "on" in digested or '1' in digested:   # Otherwise, if "on" is in the message,
                 log = 1                                 # Enable logging.
-                msg = "Log enabled"                     # Sets message to "Log enabled"
-                await client.send_message(channel, msg) # Sends message.
+                msg = "Log enabled"                     # Set message to "Log enabled"
+                await client.send_message(channel, msg) # Send message.
             elif "stat" in digested:                    # Otherwise, if "stat" is in the message,
                 msg = "Log status: " + str(log)         # Set the status of the logger as the reply
-                await client.send_message(channel, msg) # Sends a message with the status of the logger
+                await client.send_message(channel, msg) # Send a message with the status of the logger
             elif "clear" in digested:                   # Otherwise, if "clear" is in the message,
-                del history                             # Deletes history
-                del logStr                              # Deletes log as string
-                history = []                            # Creates new, empty list.
-                msg     = "Log cleared"                 # Sets message to "History cleared"
-                await client.send_message(channel, msg) # Sends message.
+                history = []                            # Empties history
+                logStr  = ''                            # Empties log as string
+                msg     = "Log cleared"                 # Set message to "History cleared"
+                await client.send_message(channel, msg) # Send message.
             else:                                       # Otherwise,
                 logStr = '\n'.join(history)             # Log as a string
-                msg    = "```" + logStr + "```"         # Puts history in code format so it's easier to read
-                await client.send_message(channel, msg) # Sends specified message.
+                msg    = "```" + logStr + "```"         # Put history in code format so it's easier to read
+                await client.send_message(channel, msg) # Send specified message.
                 
         elif digested.startswith(prefix + "help"): # Otherwise, if the message starts with [prefix]help,
             msg = ("INSERT\n"                      # Put a help message here
@@ -119,7 +118,7 @@ async def on_message(message):
                 digested  = digested.replace("prefix", '') # Get rid of all unnecessary parts of message
                 digested  = digested.replace(prefix, '')   # Get rid of all unnecessary parts of message
                 digested  = digested.replace(' ', '')      # Get rid of all unnecessary parts of message
-                oldPrefix = defPrefix                      # Saves old prefix so it can be removed
+                oldPrefix = defPrefix                      # Save old prefix so it can be removed
                 defPrefix = str(digested)                  # Change prefix to what is left of the message
                 while oldPrefix in prefixes:               # Until oldPrefix is not in prefixes at all,
                     prefixes.remove(oldPrefix)             # Remove every occurrence of prefixes.
