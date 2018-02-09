@@ -16,7 +16,7 @@
 # Copy the token and put it in the bottom line of the page, where it says client.run('token'). LEAVE YOUR TOKEN IN QUOTES.
 
 # Imports modules required for the bot
-import discord
+import discord, random
 
 # Creates a variable, "client", that performs the bot's functions
 client = discord.Client()
