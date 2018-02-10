@@ -28,6 +28,7 @@ prefixes = []
 @client.event
 # When the bot is ready, run this function below:
 async def on_ready():
+    global name                                # Globalizes the bot's name
     user    = str(client.user)                 # The bot's name + Discord tag
     name    = client.user.name                 # The bot's name
     user_id = client.user.id                   # The bot's ID
@@ -55,13 +56,13 @@ for i in usr_greetings:                # For every item in usr_greetings,
 @client.event
 # If someone says something, run this function below:
 async def on_message(message):
-    author    = message.author                         # Author of the message
-    auth_name = message.author.name                    # Author's name
-    channel   = message.channel                        # Channel that the message is on
-    server    = message.server                         # Server that the message is on
-    original  = message.content                        # Original message
-    digested  = original.lower()                       # "Digested" version of the message, comprehended so that the bot will understand
-    global defPrefix, logStr, log, msg, usr_greetings # Globalizes variables so they can be accessed.
+    author    = message.author          # Author of the message
+    auth_name = message.author.name     # Author's name
+    channel   = message.channel         # Channel that the message is on
+    server    = message.server          # Server that the message is on
+    original  = message.content         # Original message
+    digested  = original.lower()        # "Digested" version of the message, comprehended so that the bot will understand
+    global log, logStr, defPrefix, stop # Globalizes variables needed for the bot
 
     if log == 1 or log == True:                              # If log is enabled
         logStr = logStr + '\n' + auth_name + ': ' + original # Add latest message to log.
