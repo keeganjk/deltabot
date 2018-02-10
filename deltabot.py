@@ -40,11 +40,11 @@ async def on_ready():
     print('=' * 50)                            # Makes a line out of ='s that is 50 characters long
 
 # Creates variables/lists
-defPrefix     = '!!'                   # Sets default prefix, character that determines if you are talking to the bot or not
-prefixes.append(defPrefix)             # Adds the default prefix to the list of prefixes
-logStr        = ''                     # Makes a list to put history in if log is enabled
+defPrefix     = '!!'                   # Set default prefix, character that determines if you are talking to the bot or not
+prefixes.append(defPrefix)             # Add the default prefix to the list of prefixes
+logStr        = ''                     # Make a list to put history in if log is enabled
 log           = 1                      # Whether the bot records logs or not. 1 or True = on, 0 or False is off.
-msg           = ''                      # Declares variable used for replies
+msg           = ''                     # Declare variable used for replies
 usr_greetings = ['hi', 'hey', 'hello'] # Known greetings to expect from a user
 bot_greetings = []                     # A list of a bot's known greetings to reply with
 for i in usr_greetings:                # For every item in usr_greetings,
