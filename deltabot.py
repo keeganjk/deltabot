@@ -97,21 +97,21 @@ async def on_message(message):
                 await client.send_message(channel, msg) # Send message.
             else:                                       # Otherwise,
                 msg    = "```" + logStr + "```"         # Puts log in code format so it's easier to read
-                await client.send_message(channel, msg) # Sends specified message.
+                await client.send_message(channel, msg) # Send specified message.
                 
         elif digested.startswith(prefix + "help"): # Otherwise, if the message starts with [prefix]help,
             msg = ("INSERT\n"                      # Put a help message here
                    "HELP\n"
                    "MESSAGE\n"
                    "HERE")
-            await client.send_message(channel, msg) # Sends specified message
+            await client.send_message(channel, msg) # Send specified message
 
         elif digested.startswith(prefix + "info"): # Otherwise, if the message starts with [prefix]info,
             msg = ("INSERT\n"                      # Put an info message here
                    "INFO\n"
                    "MESSAGE\n"
                    "HERE")
-            await client.send_message(channel, msg) # Sends specified message
+            await client.send_message(channel, msg) # Send specified message
 
         elif digested.startswith(prefix + "set"):          # Otherwise, if message starts with [prefix]set,
             if "prefix " in digested:                      # If "prefix" is also in the message,
