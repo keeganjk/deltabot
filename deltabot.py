@@ -44,7 +44,7 @@ defPrefix     = '!!'                   # Sets default prefix, character that det
 prefixes.append(defPrefix)             # Adds the default prefix to the list of prefixes
 logStr        = ''                     # Makes a list to put history in if log is enabled
 log           = 1                      # Whether the bot records logs or not. 1 or True = on, 0 or False is off.
-msg           = 0                      # Declares variable used for replies
+msg           = ''                      # Declares variable used for replies
 usr_greetings = ['hi', 'hey', 'hello'] # Known greetings to expect from a user
 bot_greetings = []                     # A list of a bot's known greetings to reply with
 for i in usr_greetings:                # For every item in usr_greetings,
@@ -62,7 +62,6 @@ async def on_message(message):
     original  = message.content                        # Original message
     digested  = original.lower()                       # "Digested" version of the message, comprehended so that the bot will understand
     global defPrefix, logStr, log, msg, usr_greetings # Globalizes variables so they can be accessed.
-    msg       = None
 
     if log == 1 or log == True:                              # If log is enabled
         logStr = logStr + '\n' + auth_name + ': ' + original # Add latest message to log.
