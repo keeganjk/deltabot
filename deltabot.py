@@ -40,11 +40,11 @@ async def on_ready():
     print('=' * 50)                            # Makes a line out of ='s that is 50 characters long
 
 # Creates variables/lists
-defPrefix  = '!!'                      # Sets default prefix, character that determines if you are talking to the bot or not
+defPrefix     = '!!'                   # Sets default prefix, character that determines if you are talking to the bot or not
 prefixes.append(defPrefix)             # Adds the default prefix to the list of prefixes
-history = []                           # Makes a list to put history in if log is enabled
-log     = 1                            # Whether the bot records logs or not. 1 or True = on, 0 or False is off.
-msg     = 0                            # Declares variable used for replies
+logStr        = ''                     # Makes a list to put history in if log is enabled
+log           = 1                      # Whether the bot records logs or not. 1 or True = on, 0 or False is off.
+msg           = 0                      # Declares variable used for replies
 usr_greetings = ['hi', 'hey', 'hello'] # Known greetings to expect from a user
 bot_greetings = []                     # A list of a bot's known greetings to reply with
 for i in usr_greetings:                # For every item in usr_greetings,
@@ -61,20 +61,23 @@ async def on_message(message):
     server    = message.server                         # Server that the message is on
     original  = message.content                        # Original message
     digested  = original.lower()                       # "Digested" version of the message, comprehended so that the bot will understand
-    global defPrefix, history, log, msg, usr_greetings # Globalizes variables so they can be accessed.
+    global defPrefix, logStr, log, msg, usr_greetings # Globalizes variables so they can be accessed.
     msg       = None
 
-    if log == 1 or log == True:                     # If log is enabled
-        history.append(auth_name + ': ' + original) # Add latest message to history.
+    if log == 1 or log == True:                              # If log is enabled
+        logStr = logStr + '\n' + auth_name + ': ' + original # Add latest message to log.
+
+    while len(logStr) >= 1000:   # While the length of the log (string) is greater than or equal to 1000,
+        logStr  = logStr[:900]   # Log as string trimmed to 900 characters
 
     for prefix in prefixes:                                  # For every prefix,
-        
+
         for i in usr_greetings:                              # For item in usr_greetings:
             if digested.startswith(prefix + i):              # If the message starts with [prefix][item]:
                 msg = random.choice(bot_greetings)           # Choose a random choice from the bot's known greetings
                 msg = msg + ', ' + '**' + str(author) + '**' # Set reply to "[greeting], [message author]"
                 await client.send_message(channel, msg)      # Send message.
-                        
+
         if digested.startswith(prefix + "log"):         # If the message starts with [prefix]log,
             digested = digested.replace(prefix, '')     # Get rid of prefix
             if "off" in digested or '0' in digested:    # If "off" is in the message,
@@ -89,14 +92,12 @@ async def on_message(message):
                 msg = "Log status: " + str(log)         # Set the status of the logger as the reply
                 await client.send_message(channel, msg) # Send a message with the status of the logger
             elif "clear" in digested:                   # Otherwise, if "clear" is in the message,
-                history = []                            # Empties history
-                logStr  = ''                            # Empties log as string
-                msg     = "Log cleared"                 # Set message to "History cleared"
+                logStr  = ''                            # Clear log as string
+                msg     = "Log cleared"                 # Set message to "Log cleared"
                 await client.send_message(channel, msg) # Send message.
             else:                                       # Otherwise,
-                logStr = '\n'.join(history)             # Log as a string
-                msg    = "```" + logStr + "```"         # Put history in code format so it's easier to read
-                await client.send_message(channel, msg) # Send specified message.
+                msg    = "```" + logStr + "```"         # Puts log in code format so it's easier to read
+                await client.send_message(channel, msg) # Sends specified message.
                 
         elif digested.startswith(prefix + "help"): # Otherwise, if the message starts with [prefix]help,
             msg = ("INSERT\n"                      # Put a help message here
