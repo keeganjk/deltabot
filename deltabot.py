@@ -113,20 +113,6 @@ async def on_message(message):
                    "HERE")
             await client.send_message(channel, msg) # Send specified message
 
-        elif digested.startswith(prefix + "set"):          # Otherwise, if message starts with [prefix]set,
-            if "prefix " in digested:                      # If "prefix" is also in the message,
-                digested  = digested.replace("set", '')    # Get rid of all unnecessary parts of message
-                digested  = digested.replace("prefix", '') # Get rid of all unnecessary parts of message
-                digested  = digested.replace(prefix, '')   # Get rid of all unnecessary parts of message
-                digested  = digested.replace(' ', '')      # Get rid of all unnecessary parts of message
-                oldPrefix = defPrefix                      # Save old prefix so it can be removed
-                defPrefix = str(digested)                  # Change prefix to what is left of the message
-                while oldPrefix in prefixes:               # Until oldPrefix is not in prefixes at all,
-                    prefixes.remove(oldPrefix)             # Remove every occurrence of prefixes.
-                prefixes.append(defPrefix)                 # Add the (new) default prefix to prefixes
-                msg      = "Prefix changed to " + prefix   # Set message to "Prefix changed to [prefix]"
-                await client.send_message(channel, msg)    # Send message
-
         #elif digested.startswith(prefix + "command_name_here"): # Uncomment these lines and add your own custom commands!
         #    msg = "INSERT MESSAGE HERE"                         # Uncomment these lines and add your own custom commands!
         #    await client.send_message(channel, msg)             # Uncomment these lines and add your own custom commands!
