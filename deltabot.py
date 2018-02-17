@@ -58,6 +58,7 @@ for i in usr_greetings:                # For every item in usr_greetings,
 async def on_message(message):
     author    = message.author          # Author of the message
     auth_name = message.author.name     # Author's name
+    auth_id   = message.author.id       # Author's User ID
     channel   = message.channel         # Channel that the message is on
     server    = message.server          # Server that the message is on
     original  = message.content         # Original message
@@ -70,13 +71,13 @@ async def on_message(message):
     while len(logStr) >= 1000:   # While the length of the log (string) is greater than or equal to 1000,
         logStr  = logStr[:900]   # Log as string trimmed to 900 characters
 
-    for prefix in prefixes:                                  # For every prefix,
+    for prefix in prefixes:                             # For every prefix,
 
-        for i in usr_greetings:                              # For item in usr_greetings:
-            if digested.startswith(prefix + i):              # If the message starts with [prefix][item]:
-                msg = random.choice(bot_greetings)           # Choose a random choice from the bot's known greetings
-                msg = msg + ', ' + '**' + str(author) + '**' # Set reply to "[greeting], [message author]"
-                await client.send_message(channel, msg)      # Send message.
+        for i in usr_greetings:                         # For item in usr_greetings:
+            if digested.startswith(prefix + i):         # If the message starts with [prefix][item]:
+                msg = random.choice(bot_greetings)      # Choose a random choice from the bot's known greetings
+                msg = msg + ', ' + '<@' + auth_id + '>' # Set reply to "[greeting], @[message author]"
+                await client.send_message(channel, msg) # Send message.
 
         if digested.startswith(prefix + "log"):         # If the message starts with [prefix]log,
             digested = digested.replace(prefix, '')     # Get rid of prefix
