@@ -17,8 +17,8 @@ Simple Discord bot that's easy to understand and change, modify as you wish!
 > <h5>Linux</h5>
 ### Requirements:
 > <h5>Web browser</h5>
-> <h5><a href="https://www.python.org/downloads/">Python 3.6+</a> (If on macOS, you will need to run <code>Applications/Python 3.6/Install Certificates.command</code>)</h5>
-> <h5><a href="https://github.com/Rapptz/discord.py">discord.py</a> (If on Windows, you will need to use <code>C:/Python36/scripts/pip install discord.py</code> in CMD)</h5>
+> <h5><a href="https://www.python.org/downloads/">Python 3.6+</a> (If on macOS, you may need to run <code>Applications/Python 3.6/Install Certificates.command</code>)</h5>
+> <h5><a href="https://github.com/Rapptz/discord.py">discord.py</a> (If on Windows, you may need to use <code>C:/Python36/scripts/pip install discord.py</code> in CMD)</h5>
 
 ## Contents
 - [What is it?](#what-is-it)
