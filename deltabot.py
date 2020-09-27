@@ -32,7 +32,7 @@ async def on_ready():
     user    = str(client.user)                 # The bot's name + Discord tag
     name    = client.user.name                 # The bot's name
     user_id = str(client.user.id)              # The bot's ID
-    prefixes.append('<@' + user_id + '> ')     # Add's "@[bot name] " as a prefix
+    prefixes.append('<@!' + user_id + '> ')     # Add's "@[bot name] " as a prefix
     print("Logged in as : " + name)            # The bot is logged in as [its name]
     print("Client ID    : " + user_id)         # The bot prints its ID
     print('=' * 50)                            # Makes a line out of ='s that is 50 characters long
