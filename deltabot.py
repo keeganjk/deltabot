@@ -31,7 +31,7 @@ async def on_ready():
     global name                                # Globalizes the bot's name
     user    = str(client.user)                 # The bot's name + Discord tag
     name    = client.user.name                 # The bot's name
-    user_id = client.user.id                   # The bot's ID
+    user_id = str(client.user.id)              # The bot's ID
     prefixes.append('<@' + user_id + '> ')     # Add's "@[bot name] " as a prefix
     print("Logged in as : " + name)            # The bot is logged in as [its name]
     print("Client ID    : " + user_id)         # The bot prints its ID
@@ -58,9 +58,9 @@ for i in usr_greetings:                # For every item in usr_greetings,
 async def on_message(message):
     author    = message.author          # Author of the message
     auth_name = message.author.name     # Author's name
-    auth_id   = message.author.id       # Author's User ID
+    auth_id   = str(message.author.id)  # Author's User ID
     channel   = message.channel         # Channel that the message is on
-    server    = message.server          # Server that the message is on
+    #server    = message.server         # Server that the message is on
     original  = message.content         # Original message
     digested  = original.lower()        # "Digested" version of the message, comprehended so that the bot will understand
     global log, logStr, defPrefix, stop # Globalizes variables needed for the bot
@@ -77,42 +77,50 @@ async def on_message(message):
             if digested.startswith(prefix + i):         # If the message starts with [prefix][item]:
                 msg = random.choice(bot_greetings)      # Choose a random choice from the bot's known greetings
                 msg = msg + ', ' + '<@' + auth_id + '>' # Set reply to "[greeting], @[message author]"
-                await client.send_message(channel, msg) # Send message.
+                #await client.send_message(channel, msg) # Send message.
+                await channel.send(msg)                 # Send message.
 
         if digested.startswith(prefix + "log"):         # If the message starts with [prefix]log,
             digested = digested.replace(prefix, '')     # Get rid of prefix
             if "off" in digested or '0' in digested:    # If "off" is in the message,
                 log = 0                                 # Disable logging.
                 msg = "Log disabled"                    # Set message to "Log disabled"
-                await client.send_message(channel, msg) # Send message
+                #await client.send_message(channel, msg) # Send message
+                await channel.send(msg)                 # Send message.
             elif "on" in digested or '1' in digested:   # Otherwise, if "on" is in the message,
                 log = 1                                 # Enable logging.
                 msg = "Log enabled"                     # Set message to "Log enabled"
-                await client.send_message(channel, msg) # Send message.
+                #await client.send_message(channel, msg) # Send message.
+                await channel.send(msg)                 # Send message.
             elif "stat" in digested:                    # Otherwise, if "stat" is in the message,
                 msg = "Log status: " + str(log)         # Set the status of the logger as the reply
-                await client.send_message(channel, msg) # Send a message with the status of the logger
+                #await client.send_message(channel, msg) # Send a message with the status of the logger
+                await channel.send(msg)                 # Send message.
             elif "clear" in digested:                   # Otherwise, if "clear" is in the message,
                 logStr  = ''                            # Clear log as string
                 msg     = "Log cleared"                 # Set message to "Log cleared"
-                await client.send_message(channel, msg) # Send message.
+                #await client.send_message(channel, msg) # Send message.
+                await channel.send(msg)                 # Send message.
             else:                                       # Otherwise,
                 msg    = "```" + logStr + "```"         # Puts log in code format so it's easier to read
-                await client.send_message(channel, msg) # Send specified message.
+                #await client.send_message(channel, msg) # Send specified message.
+                await channel.send(msg)                 # Send message.
                 
         elif digested.startswith(prefix + "help"): # Otherwise, if the message starts with [prefix]help,
             msg = ("INSERT\n"                      # Put a help message here
                    "HELP\n"
                    "MESSAGE\n"
                    "HERE")
-            await client.send_message(channel, msg) # Send specified message
+            #await client.send_message(channel, msg) # Send specified message
+            await channel.send(msg)                 # Send message.
 
         elif digested.startswith(prefix + "info"): # Otherwise, if the message starts with [prefix]info,
             msg = ("INSERT\n"                      # Put an info message here
                    "INFO\n"
                    "MESSAGE\n"
                    "HERE")
-            await client.send_message(channel, msg) # Send specified message
+            #await client.send_message(channel, msg) # Send specified message
+            await channel.send(msg)                 # Send message.
 
         #elif digested.startswith(prefix + "command_name_here"): # Uncomment these lines and add your own custom commands!
         #    msg = "INSERT MESSAGE HERE"                         # Uncomment these lines and add your own custom commands!
