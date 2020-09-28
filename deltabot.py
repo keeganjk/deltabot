@@ -77,6 +77,7 @@ async def on_message(message):
             if digested.startswith(prefix + i):         # If the message starts with [prefix][item]:
                 msg = random.choice(bot_greetings)      # Choose a random choice from the bot's known greetings
                 msg = msg + ', ' + '<@' + auth_id + '>' # Set reply to "[greeting], @[message author]"
+                msg = msg + ', ' + '<!@' + auth_id + '>' # Set reply to "[greeting], @[message author]"
                 #await client.send_message(channel, msg) # Send message.
                 await channel.send(msg)                 # Send message.
 
